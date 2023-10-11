@@ -13,4 +13,5 @@ Se soluciona agregando los siguientes comandos en "app.js" de la API:
     app.use(cors()); //En los middlewares
 
 Justo así:
+
 ![Alt text](image.png)
