@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <title>MaterialWrap - jQuery full version</title>
+  <title>Lista de rentas</title>
   <link rel="stylesheet" href="assets/css/vendor.bundle.css">
   <link rel="stylesheet" href="assets/css/app.bundle.css">
   <link rel="stylesheet" href="assets/css/theme-a.css">
@@ -330,10 +330,10 @@
             <div class="row">
               <div class="col-xs-12">
                 <header id="header">
-                  <h1>Catálogo de vehiculos</h1>
+                  <h1>Lista de rentas</h1>
                   <ol class="breadcrumb">
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="rental.html">Catálogo de vehiculos</a></li>
+                    <li><a href="rental-list.html">Lista de rentas</a></li>
                   </ol>
                 </header>
               </div>
@@ -393,16 +393,18 @@
                         width="100%">
                         <thead>
                           <tr>
-                            <th data-orderable="false" class="col-xs-1">ID Vehiculo</th>
-                            <th data-orderable="false" class="col-xs-2">Marca</th>
-                            <th data-orderable="false" class="col-xs-2">Modelo</th>
-                            <th data-orderable="false" class="col-xs-2">Año</th>
-                            <th data-orderable="false" class="col-xs-2">Color</th>
-                            <th data-orderable="false" class="col-xs-2">Placa</th>
-                            <th data-orderable="false" class="col-xs-2">Millaje</th>
-                            <th data-orderable="false" class="col-xs-1">Estado</th>
-                            <th data-orderable="false" class="col-xs-2">Imagen</th>
-                            <th data-orderable="false" class="col-xs-2">Recargo</th>
+                            <th data-orderable="false" class="col-xs-1">ID Renta</th>
+                            <th data-orderable="false" class="col-xs-2">ID cliente</th>
+                            <th data-orderable="false" class="col-xs-2">Nombre Cliente</th>
+                            <th data-orderable="false" class="col-xs-2">Vehículo</th>
+                            <th data-orderable="false" class="col-xs-2">Inicio renta</th>
+                            <th data-orderable="false" class="col-xs-2">Final Renta</th>
+                            <th data-orderable="false" class="col-xs-2">Millaje inicio</th>
+                            <th data-orderable="false" class="col-xs-1">Millaje Final</th>
+                            <th data-orderable="false" class="col-xs-2">Costo total</th>
+                            <th data-orderable="false" class="col-xs-2">Estado</th>
+                            <th data-orderable="false" class="col-xs-2">Creado</th>
+                            <th data-orderable="false" class="col-xs-2">Modificado</th>
                             <th data-orderable="false" class="col-xs-2">
                               <button class="btn btn-primary btn-fab  animate-fab" data-toggle="modal"
                                 data-target="#product_add_modal"><i class="zmdi zmdi-plus"></i></button>
@@ -411,7 +413,7 @@
                         </thead>
                         <div id="result" style="display: flex; justify-content: space-between;">
                         </div>
-                        <tbody id="vehicleInfo"></tbody>
+                        <tbody id="RentaInfo"></tbody>
                       </table>
                     </div>
                   </div>
@@ -1111,7 +1113,7 @@
       <div class="modal-content">
         <div class="modal-header p-b-15">
 
-          <h4 class="modal-title">Product Setup</h4>
+          <h4 class="modal-title">Detalles de la factura</h4>
           <ul class="card-actions icons right-top">
 
             <a href="javascript:void(0)" data-dismiss="modal" class="text-white" aria-label="Close">
@@ -1124,14 +1126,7 @@
           <div class="tabpanel">
             <ul class="nav nav-tabs p-0">
               <li class="active" role="presentation"><a href="#product_add_general" data-toggle="tab"
-                  aria-expanded="true">General Info</a></li>
-              <li role="presentation"><a href="#product_add_images" data-toggle="tab" aria-expanded="true">Product
-                  Images</a></li>
-              <li role="presentation"><a href="#product_add_price" data-toggle="tab" aria-expanded="true">Price</a></li>
-              <li role="presentation"><a href="#product_add_inventory" data-toggle="tab"
-                  aria-expanded="true">Inventory</a></li>
-              <li role="presentation"><a href="#product_add_shipping" data-toggle="tab"
-                  aria-expanded="true">Shipping</a></li>
+                  aria-expanded="true">Información</a></li>              
             </ul>
           </div>
           <div class="tab-content">
@@ -1140,143 +1135,28 @@
                 <div class="card-body">
                   <form class="form-horizontal">
                     <div class="form-group label-floating is-empty">
-                      <label class="control-label">Title</label>
-                      <input type="text" class="form-control">
+                      <label class="control-label">ID Cliente</label>
+                      <input type="text" class="form-control" id="id_client">
                     </div>
-                    <div class="form-group">
-                      <div id="add_product_desc">Say hello to a triangular cluster of neatly organized chaos, wrapped in
-                        a tasty cyan-to-magenta rainbow roll and deep-fried to imperfection.</div>
+                    <div class="form-group label-floating is-empty">
+                      <label class="control-label">ID Vehículo</label>
+                      <input type="text" class="form-control" id="id_vehicle">
                     </div>
-                    <div class="chips chips-placeholder"></div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fadeIn" id="product_add_images">
-              <div class="card card p-20 p-t-10 m-b-0">
-                <div class="card-body">
-                  <form action="#" class="dropzone" id="product_add_images_form" enctype="multipart/form-data"></form>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fadeIn" id="product_add_price">
-              <div class="card card p-20 p-t-10 m-b-0">
-                <div class="card-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group label-floating is-empty">
-                          <div class="input-group">
-                            <span class="input-group-addon">$</span>
-                            <label class="control-label">Price</label>
-                            <input type="text" class="form-control">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group label-floating is-empty">
-                          <div class="input-group">
-                            <span class="input-group-addon">$</span>
-                            <label class="control-label">Compare at price</label>
-                            <input type="text" class="form-control">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xs-12">
-                        <div class="form-group">
-                          <div class="togglebutton m-b-15 ">
-                            <label>
-                              <input type="checkbox" class="toggle-info" checked> Charge taxes on this product
-                            </label>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="form-group label-floating is-empty">
+                      <label class="control-label">Fecha Inicio Renta</label>
+                      <input type="date" class="form-control" id="rental_init_date">
                     </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fadeIn" id="product_add_inventory">
-              <div class="card card p-20 p-t-10 m-b-0">
-                <div class="card-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group label-floating is-empty">
-                          <label class="control-label">SKU (Stock Keeping Unit)</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group label-floating is-empty">
-                          <label class="control-label">Barcode (ISBN, UPC, GTIN, etc.)</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
+                    <div class="form-group label-floating is-empty">
+                      <label class="control-label">Fecha Final Renta</label>
+                      <input type="date" class="form-control" id="rental_end_date">
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="" class="control-label">Inventory policy</label>
-                          <select class="select form-control">
-                            <option selected>Don't track inventory</option>
-                            <option>Track this product's inventory</option>
-                          </select>
-                        </div>
-                      </div>
+                    <div class="form-group label-floating is-empty">
+                      <label class="control-label">Millaje inicial</label>
+                      <input type="text" class="form-control" id="init_milieage">
                     </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fadeIn" id="product_add_shipping">
-              <div class="card card p-20 p-t-10 m-b-0">
-                <div class="card-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group label-floating is-empty">
-                          <label class="control-label">Width</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group label-floating is-empty">
-                          <label class="control-label">Height</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group label-floating is-empty">
-                          <label class="control-label">Depth</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group label-floating is-empty">
-                          <div class="input-group">
-                            <label class="control-label">Weight</label>
-                            <input type="text" class="form-control" aria-label="...">
-                            <div class="input-group-btn suffix-select">
-                              <select class="select form-control">
-                                <option>lb</option>
-                                <option>kg</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group label-floating is-empty">
-                          <div class="input-group">
-                            <span class="input-group-addon">$</span>
-                            <label class="control-label">Extra Shipping Fee</label>
-                            <input type="text" class="form-control">
-                          </div>
-                        </div>
-                      </div>
+                    <div class="form-group label-floating is-empty">
+                      <label class="control-label">Tarifa de renta</label>
+                      <input type="text" class="form-control" id="rental_fee">
                     </div>
                   </form>
                 </div>
@@ -1284,14 +1164,15 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Add Product</button>
+            <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="createButton">Añadir renta</button>
           </div>
-        </div>
+          </div>
         <!-- modal-content -->
       </div>
       <!-- modal-dialog -->
     </div>
+  </div>
     <script>
       document.getElementById('signout-button').addEventListener('click', function () {
         cerrar_sesion();
@@ -1301,9 +1182,11 @@
     <script src="./js/validar_permisos.js"></script>
     <script>generar_menu(localStorage.getItem('id_user'));</script>
     <script src="assets/js/vendor.bundle.js"></script>
-    <script src="assets/js/app.bundle.js"></script>
-    <script src="./js/detalle_carros.js"></script>    
-    <script src="./js/generar_lista_carros.js"></script>
+    <script src="assets/js/app.bundle.js"></script>    
+    <script src="./js/generar_lista_rentas.js"></script>
+    <script src="./js/eliminar_renta.js"></script>
+    <script src="./js/editar_renta.js"></script>
+    <script src="./js/crear_renta.js"></script>
 </body>
 
 </html>

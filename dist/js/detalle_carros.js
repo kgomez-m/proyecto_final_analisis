@@ -15,10 +15,10 @@ fetch(apiUrl)
 
     // Crear contenido HTML con los datos de la API
     const htmlContent = `
-      <div style="margin-left: 15px;">Total de coches: ${data.response[0].total_cars}</div>
-      <div>Coches disponibles: ${data.response[0].total_cars_available}</div>
-      <div>Coches reservados: ${data.response[0].total_cars_reserved}</div>
-      <div style="margin-right: 15px;">Coches en mantenimiento: ${data.response[0].total_cars_maintenance}</div>
+      <div style="margin-left: 15px;">Total de Vehículos: ${data.response[0].total_cars}</div>
+      <div>Vehículos disponibles: ${data.response[0].total_cars_available}</div>
+      <div>Vehículos reservados: ${data.response[0].total_cars_reserved}</div>
+      <div style="margin-right: 15px;">Vehículos en mantenimiento: ${data.response[0].total_cars_maintenance}</div>
     `;
 
     // Establecer el contenido del elemento "result" con los datos de la API
