@@ -25,10 +25,10 @@ function buscar_usuario(id_user) {
                     .then(data2 => {
                         const permissions = data2.response;
                         permissions.forEach(permission => {
-                            console.log(permission.id_permission);
+                            // console.log(permission.id_permission);
                             if (permission.level2 && Array.isArray(permission.level2)) {
                                 permission.level2.forEach(subPermission => {
-                                    console.log(subPermission.id_permission);
+                                    // console.log(subPermission.id_permission);
                                 });
                             }
                         });

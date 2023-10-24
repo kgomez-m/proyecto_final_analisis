@@ -1,14 +1,14 @@
 function generar_menu(id_user) {
     const permissionToRouteMap = {
-        PROFILE: 'profile.html',
+        // PROFILE: 'profile.html',
         DASHBOARD: 'home.html',
-        VEHICLE: 'vehicle.html',
+        VEHICLE: '#',
         V_LIST: 'vehicle-list.html',
         CLIENT: 'client.html',
-        RENTAL: 'rental.html',
+        RENTAL: '#',
         R_LIST: 'rental-list.html',
         R_INVOICE: 'rental-invoice.html',
-        ADMINISTRATION: 'administration.html',
+        ADMINISTRATION: '#',
         A_ROLE: 'admin-role.html',
         A_USER: 'admin-user.html',
 
@@ -26,6 +26,10 @@ function generar_menu(id_user) {
             const apiPermissions = data2.response;
 
             function createMenuItem(permission) {
+                // console.log("permission", permission.id_permission);
+                if (permission.id_permission != "PROFILE") {
+
+                }
                 const link = document.createElement('a');
                 link.textContent = permission.name;
                 // Obtener la ruta del objeto permissionToRouteMap o usar "index.html" si no está definida

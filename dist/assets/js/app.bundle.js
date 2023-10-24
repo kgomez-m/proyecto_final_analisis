@@ -766,6 +766,8 @@
 	  (0, _ecom.conversionStats)();
 	  (0, _ecom.todaysSales)();
 	  (0, _ecom.newUsers)();
+	  (0, _ecom.carsAvailable)();
+	  (0, _ecom.carsMant)();
 	};
 	$(document).on('resize', function () {
 	  _.debounce(_sidebars.switchMenuState, 300, false)();
@@ -4538,6 +4540,7 @@
 	    $(this).attr('id', "CheckboxId_" + (i + 1));
 	  });
 	  //Initialize and UI setup
+	  
 	  $('.product-table-wrapper table').DataTable({
 	    "aaSorting": [[2, 'asc']]
 	  });
@@ -5215,7 +5218,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.customerTable = exports.orderTable = exports.editProductImg = exports.addProductTags = exports.triggerDropzoneEcom = exports.triggerSummerNoteEcom = exports.newUsers = exports.todaysSales = exports.conversionStats = exports.salesStats = undefined;
+	exports.customerTable = exports.orderTable = exports.editProductImg = exports.addProductTags = exports.triggerDropzoneEcom = exports.triggerSummerNoteEcom = exports.newUsers = exports.carsMant = exports.todaysSales = exports.carsAvailable = exports.conversionStats = exports.salesStats = undefined;
 	
 	var _chips = __webpack_require__(21);
 	
@@ -5277,8 +5280,8 @@
 	  }
 	};
 	var todaysSales = function todaysSales() {
-	  if ($('#totalSales').length) {
-	    var newSales = new ProgressBar.Circle('#totalSales', {
+	  if ($('#totalCars').length) {
+	    var newSales = new ProgressBar.Circle('#totalCars', {
 	      color: '#fb4869',
 	      strokeWidth: 3,
 	      trailWidth: 3,
@@ -5294,8 +5297,8 @@
 	  }
 	};
 	var newUsers = function newUsers() {
-	  if ($('#newSignups').length) {
-	    var newSignUps = new ProgressBar.Circle('#newSignups', {
+	  if ($('#carRents').length) {
+	    var newSignUps = new ProgressBar.Circle('#carRents', {
 	      color: '#42a5f5',
 	      strokeWidth: 3,
 	      trailWidth: 3,
@@ -5308,6 +5311,40 @@
 	      }
 	    });
 	    newSignUps.animate(0.64);
+	  }
+	};
+	var carsAvailable = function carsAvailable() {
+	  if ($('#carsAvailable').length) {
+	    var newCarsAvailable = new ProgressBar.Circle('#carsAvailable', {
+	      color: '#ffe199',
+	      strokeWidth: 3,
+	      trailWidth: 3,
+	      duration: 1500,
+	      text: {
+	        value: '0%'
+	      },
+	      step: function step(state, bar) {
+	        bar.setText((bar.value() * 100).toFixed(0) + "%");
+	      }
+	    });
+	    newCarsAvailable.animate(0.20);
+	  }
+	};
+	var carsMant = function carsMant() {
+	  if ($('#carsMant').length) {
+	    var newCarsMant = new ProgressBar.Circle('#carsMant', {
+	      color: '#ffe199',
+	      strokeWidth: 3,
+	      trailWidth: 3,
+	      duration: 1500,
+	      text: {
+	        value: '0%'
+	      },
+	      step: function step(state, bar) {
+	        bar.setText((bar.value() * 100).toFixed(0) + "%");
+	      }
+	    });
+	    newCarsMant.animate(0.45);
 	  }
 	};
 	//http://summernote.org/getting-started/#run-summernote
@@ -5358,6 +5395,8 @@
 	exports.conversionStats = conversionStats;
 	exports.todaysSales = todaysSales;
 	exports.newUsers = newUsers;
+	exports.carsAvailable = carsAvailable;
+	exports.carsMant = carsMant;
 	exports.triggerSummerNoteEcom = triggerSummerNoteEcom;
 	exports.triggerDropzoneEcom = triggerDropzoneEcom;
 	exports.addProductTags = addProductTags;
