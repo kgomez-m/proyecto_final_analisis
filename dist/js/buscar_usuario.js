@@ -1,4 +1,4 @@
-function buscar_usuario(id_user) {
+function buscar_usuario(id_user) {    
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -13,7 +13,7 @@ function buscar_usuario(id_user) {
                     element.textContent = userData.name;
                 });
                 const titleElement = document.querySelector('.title');
-                titleElement.textContent = userData.name_rol;
+                if(titleElement) titleElement.textContent = userData.name_rol;
 
                 var requestOptions2 = {
                     method: 'GET',

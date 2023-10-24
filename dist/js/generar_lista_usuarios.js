@@ -1,3 +1,4 @@
+$(document).ready(function () {
 var requestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -16,21 +17,6 @@ fetch("http://localhost:5000/api/project/pf_user/", requestOptions)
 
         data.response.forEach(client => {
             var row = document.createElement("tr");
-
-            var checkboxCell = document.createElement("td");
-            checkboxCell.className = "checkbox-cell";
-            var checkbox = document.createElement("span");
-            checkbox.className = "checkbox";
-            var label = document.createElement("label");
-            var checkboxInput = document.createElement("input");
-            checkboxInput.type = "checkbox";
-            label.appendChild(checkboxInput);
-            var checkboxMaterial = document.createElement("span");
-            checkboxMaterial.className = "checkbox-material";
-            label.appendChild(checkboxMaterial);
-            checkbox.appendChild(label);
-            checkboxCell.appendChild(checkbox);
-            row.appendChild(checkboxCell);
 
             var idUserCell = document.createElement("td");
             idUserCell.textContent = client.id_user;
@@ -90,9 +76,13 @@ fetch("http://localhost:5000/api/project/pf_user/", requestOptions)
             deleteIcon.className = "zmdi zmdi-delete";
             deleteLink.appendChild(deleteIcon);
             deleteCell.appendChild(deleteLink);
-            row.appendChild(deleteCell);
+            // row.appendChild(deleteCell);
 
-            clientTableBody.appendChild(row);
+            clientTableBody.appendChild(row);            
+        });
+        $('#productsTable').DataTable({
+            searching: true
         });
     })
     .catch(error => console.log('error', error));
+});
