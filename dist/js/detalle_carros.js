@@ -1,8 +1,5 @@
-// Definir la URL de la API
-const apiUrl = 'http://localhost:5000/api/project/pf_vehicle/summary';
-
-// Hacer una solicitud GET a la API
-fetch(apiUrl)
+var api_url = "http://localhost:4000/api/project/pf_dashboard/";
+fetch(api_url + 'vehicle-summary')
   .then(response => {
     if (!response.ok) {
       throw new Error('La solicitud de la API falló');
@@ -10,21 +7,13 @@ fetch(apiUrl)
     return response.json();
   })
   .then(data => {
-    // Obtener una referencia al elemento "result"
-    const resultDiv = document.getElementById('result');
-
-    // Crear contenido HTML con los datos de la API
-    const htmlContent = `
-      <div style="margin-left: 15px;">Total de Vehículos: ${data.response[0].total_cars}</div>
-      <div>Vehículos disponibles: ${data.response[0].total_cars_available}</div>
-      <div>Vehículos reservados: ${data.response[0].total_cars_reserved}</div>
-      <div style="margin-right: 15px;">Vehículos en mantenimiento: ${data.response[0].total_cars_maintenance}</div>
-    `;
-
-    // Establecer el contenido del elemento "result" con los datos de la API
-    resultDiv.innerHTML = htmlContent;
+    if (data.success) {
+      $("#count-total-cars").html(data.response[0].total_cars)
+      $("#count-rents").html(data.response[0].total_cars_reserved)
+      $("#count-available").html(data.response[0].total_cars_available)
+      $("#count-maintenance").html(data.response[0].total_cars_maintenance)
+    }
   })
   .catch(error => {
-    // Manejar errores
-    console.error('Error al obtener datos de la API:', error);
+    console.error('Error al obtener información de vehículos:', error);
   });

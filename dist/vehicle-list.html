@@ -6,18 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <title>Lista de vehículos</title>
+  <title>Lista de vehículos - Renta Car</title>
   <link rel="stylesheet" href="assets/css/vendor.bundle.css">
   <link rel="stylesheet" href="assets/css/app.bundle.css">
   <link rel="stylesheet" href="assets/css/theme-a.css">
-
-  <script src="assets/js/vendor.bundle.js"></script>
-    <script src="assets/js/app.bundle.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.jqueryui.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
   <style>
     .card.card-data-tables .dataTables_wrapper .dataTables_filter {
       display: block;
@@ -25,6 +19,12 @@
 
     input[type=search] {
       -webkit-appearance: auto !important;
+    }
+
+    #footer_wrapper {
+      bottom: 0 !important;
+      position: fixed;
+      width: 100%;
     }
   </style>
 </head>
@@ -51,8 +51,8 @@
               <a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false">
                 <span class="meta">
                   <span class="avatar">
-                    <img src="assets/img/profiles/02.jpg" alt="" class="img-circle max-w-35">
-                    <i class="badge mini success status"></i>
+                    <!-- <img src="assets/img/profiles/02.jpg" alt="" class="img-circle max-w-35">
+                    <i class="badge mini success status"></i> -->
                   </span>
                   <span class="name"></span>
                   <span class="caret"></span>
@@ -82,7 +82,7 @@
               <div class="logo">
                 <img src="assets/img/logo/logo-icon.png" alt="Logo">
               </div>
-              <h1 class="brand-text">MaterialWrap</h1>
+              <h1 class="brand-text">Renta Car</h1>
             </a>
           </li>
           <li class="menu-icon">
@@ -113,7 +113,7 @@
                 <header id="header">
                   <h1>Catálogo de vehiculos</h1>
                   <ol class="breadcrumb">
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html">Vehículos</a></li>
                     <li><a href="rental.html">Catálogo de vehiculos</a></li>
                   </ol>
                 </header>
@@ -124,51 +124,77 @@
         <div id="content" class="container-fluid">
           <div class="content-body">
             <div class="row">
+							<div class="col-xs-12 col-sm-3">
+								<div class="card sales-card">
+									<header class="card-heading card-heading-total">
+										<h2 class="card-title">Total Carros</h2>
+									</header>
+									<div class="card-body totalCars">
+										<div class="row">
+											<div class="col-sm-12">
+												<h2 id="count-total-cars" class="card-count text-center"></h2>
+												<p class="text-center" style="color: #9499A1;"> Vehículos en total</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-3">
+								<div class="card sales-card">
+									<header class="card-heading card-heading-car-rents">
+										<h2 class="card-title">Carros Rentados</h2>
+									</header>
+									<div class="card-body carRents">
+										<div class="row">
+											<div class="col-sm-12">
+												<h2 id="count-rents" class="card-count text-center"></h2>
+												<p class="text-center" style="color: #9499A1;"> Vehículos rentados</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-3">
+								<div class="card sales-card">
+									<header class="card-heading card-heading-car-avaiable">
+										<h2 class="card-title">Carros Disponibles</h2>
+									</header>
+									<div class="card-body carsAvailable">
+										<div class="row">
+											<div class="col-sm-12">
+												<h2 id="count-available" class="card-count text-center"></h2>
+												<p class="text-center" style="color: #9499A1;"> Vehículos disponibles
+													para renta</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-3">
+								<div class="card sales-card">
+									<header class="card-heading card-heading-maintenance">
+										<h2 class="card-title">Carros Mantenimiento</h2>
+									</header>
+									<div class="card-body carsMant">
+										<div class="row">
+											<div class="col-sm-12">
+												<h2 id="count-maintenance" class="card-count text-center"></h2>
+												<p class="text-center" style="color: #9499A1;"> Vehículos en
+													mantenimiento</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+            <div class="row">
               <div class="col-xs-12">
-                <div class="card card-data-tables">
-                  <header class="card-heading">
-                    <h2 class="card-title">Administrar Vehículos</h2>
-                    <small class="dataTables_info"></small>
-                    <div class="card-search">
-                      <div id="productsTable_wrapper" class="form-group label-floating is-empty">
-                        <i class="zmdi zmdi-search search-icon-left"></i>
-                        <input type="text" class="form-control filter-input" placeholder="Filtrar Vehículo..."
-                          autocomplete="off">
-                        <a href="javascript:void(0)" class="close-search" data-card-search="close" data-toggle="tooltip"
-                          data-placement="top" title="Close"><i class="zmdi zmdi-close"></i></a>
-                      </div>
-                    </div>
-                    <ul class="card-actions icons right-top">
-                      <li id="deleteItems" style="display: none;">
-                        <span class="label label-info pull-left m-t-5 m-r-10 text-white"></span>
-                        <a href="javascript:void(0)" id="confirmDelete" data-toggle="tooltip" data-placement="top"
-                          data-original-title="Delete Product(s)">
-                          <i class="zmdi zmdi-delete"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" data-card-search="open" data-toggle="tooltip" data-placement="top"
-                          data-original-title="Filter Products">
-                          <i class="zmdi zmdi-filter-list"></i>
-                        </a>
-                      </li>
-                      <li class="dropdown" data-toggle="tooltip" data-placement="top"
-                        data-original-title="Show Entries">
-                        <a href="javascript:void(0)" data-toggle="dropdown">
-                          <i class="zmdi zmdi-more-vert"></i>
-                        </a>
-                        <div id="dataTablesLength">
-                        </div>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top"
-                          data-original-title="Export All">
-                          <i class="zmdi zmdi-inbox"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </header>
+                <div class="card card-data-tables">                  
                   <div class="card-body p-0">
+                    <header class="card-heading">
+                      <h2 class="card-title">Administrar Vehículos</h2>
+                      <small class="dataTables_info"></small>
+                    </header>
                     <div class="table-responsive">
                       <table id="productsTable" class="mdl-data-table product-table m-t-30" cellspacing="0"
                         width="100%">
@@ -188,8 +214,8 @@
                             <th data-orderable="true" class="col-xs-2">Acciones</th>
                           </tr>
                         </thead>
-                        <div id="result" style="display: flex; justify-content: space-between;">
-                        </div>
+                        <!-- <div id="result" style="display: flex; justify-content: space-between;">
+                        </div> -->
                         <tbody id="vehicleInfo"></tbody>
                       </table>
                     </div>
@@ -198,387 +224,37 @@
               </div>
             </div>
           </div>
-          <aside class="drawer-right-lg mw-lightGray drawer-fixed ecom-edit-panel">
-            <div class="drawer-content">
-              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                        href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        General Info
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body">
-                      <div class="card">
-                        <div class="card-body">
-                          <form>
-                            <div class="form-group label-floating">
-                              <label class="control-label">Title</label>
-                              <input type="text" class="form-control" value="A Gaggle of Triangles">
-                            </div>
-                            <div class="form-group">
-                              <div id="edit_product_desc">Say hello to a triangular cluster of neatly organized chaos,
-                                wrapped in a tasty cyan-to-magenta rainbow roll and deep-fried to imperfection.</div>
-                            </div>
-                            <div class="chips chips-placeholder"></div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
-                        aria-expanded="true" aria-controls="collapseTwo">
-                        Product Images
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                      <div class="edit_product_img min-h-200">
-                        <div><img src="assets/img/ecom/products/39_Ie8T.jpeg" alt=""></div>
-                        <div><img src="assets/img/ecom/products/39_8wMD.jpeg" alt=""></div>
-                        <div><img src="assets/img/ecom/products/39_JnFC.jpeg" alt=""></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                        href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Price
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
-                    aria-labelledby="headingThree">
-                    <div class="panel-body">
-                      <form>
-                        <div class="row">
-                          <div class="col-xs-12">
-                            <div class="form-group label-floating is-empty">
-                              <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                <label class="control-label">Price</label>
-                                <input type="text" class="form-control">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-xs-12">
-                            <div class="form-group label-floating is-empty">
-                              <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                <label class="control-label">Compare at price</label>
-                                <input type="text" class="form-control">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-xs-12">
-                            <div class="form-group">
-                              <div class="togglebutton m-b-15 ">
-                                <label>
-                                  <input type="checkbox" class="toggle-info" checked> Charge taxes on this product
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingFour">
-                    <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                        href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        Inventory
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                    <div class="panel-body">
-                      <form>
-                        <div class="row">
-                          <div class="col-xs-12">
-                            <div class="form-group label-floating is-empty">
-                              <label class="control-label">SKU (Stock Keeping Unit)</label>
-                              <input type="text" class="form-control">
-                            </div>
-                          </div>
-                          <div class="col-xs-12">
-                            <div class="form-group label-floating is-empty">
-                              <label class="control-label">Barcode (ISBN, UPC, GTIN, etc.)</label>
-                              <input type="text" class="form-control">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-xs-12">
-                            <div class="form-group">
-                              <label for="" class="control-label">Inventory policy</label>
-                              <select class="select form-control">
-                                <option selected>Don't track inventory</option>
-                                <option>Track this product's inventory</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingFive">
-                    <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                        href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                        Shipping
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                    <div class="panel-body">
-                      <form>
-                        <div class="row">
-                          <div class="col-xs-12">
-                            <div class="form-group label-floating is-empty">
-                              <label class="control-label">Width</label>
-                              <input type="text" class="form-control">
-                            </div>
-                          </div>
-                          <div class="col-xs-12">
-                            <div class="form-group label-floating is-empty">
-                              <label class="control-label">Height</label>
-                              <input type="text" class="form-control">
-                            </div>
-                          </div>
-                          <div class="col-xs-12">
-                            <div class="form-group label-floating is-empty">
-                              <label class="control-label">Depth</label>
-                              <input type="text" class="form-control">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-xs-12">
-                            <div class="form-group label-floating is-empty">
-                              <div class="input-group">
-                                <label class="control-label">Weight</label>
-                                <input type="text" class="form-control" aria-label="...">
-                                <div class="input-group-btn suffix-select">
-                                  <select class="select form-control">
-                                    <option>lb</option>
-                                    <option>kg</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-xs-12">
-                            <div class="form-group label-floating is-empty">
-                              <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                <label class="control-label">Extra Shipping Fee</label>
-                                <input type="text" class="form-control">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+
+        </div>
+        <footer id="footer_wrapper">
+          <div class="footer-content">            
+            <div class="row">
+              <div class="col-xs-8">
+                <p class="copy">&copy; Copyright <time class="year"></time> Renta Car - All Rights Reserved</p>
               </div>
-            </div>
-            <footer class="drawer-footer">
-              <button type="button" class="btn btn-default" data-dismiss="drawer">Cancel</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </footer>
-            <section id="chat_compose_wrapper">
-              <div class="tippy-top">
-                <div class="recipient">Allison Grayce</div>
-                <ul class="card-actions icons  right-top">
+              <div class="col-xs-4">
+                <ul class="social">
                   <li>
-                    <a href="javascript:void(0)">
-                      <i class="zmdi zmdi-videocam"></i>
-                    </a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false">
-                      <i class="zmdi zmdi-more-vert"></i>
-                    </a>
-                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
-                      <li>
-                        <a href="javascript:void(0)">Option One</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">Option Two</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">Option Three</a>
-                      </li>
-                    </ul>
+                    <a href="javascript:void(0)"> </a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)" data-chat="close">
-                      <i class="zmdi zmdi-close"></i>
-                    </a>
+                    <a href="javascript:void(0)"> </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)"> </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)"> </a>
                   </li>
                 </ul>
               </div>
-              <div class='chat-wrapper scrollbar'>
-                <div class='chat-message scrollbar'>
-                  <div class='chat-message chat-message-recipient'>
-                    <img class='chat-image chat-image-default' src='assets/img/profiles/05.jpg' />
-                    <div class='chat-message-wrapper'>
-                      <div class='chat-message-content'>
-                        <p>Hey Mike, we have funding for our new project!</p>
-                      </div>
-                      <div class='chat-details'>
-                        <span class='today small'></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class='chat-message chat-message-sender'>
-                    <img class='chat-image chat-image-default' src='assets/img/profiles/02.jpg' />
-                    <div class='chat-message-wrapper '>
-                      <div class='chat-message-content'>
-                        <p>Awesome! Photo booth banh mi pitchfork kickstarter whatever, prism godard ethical 90's cray
-                          selvage.</p>
-                      </div>
-                      <div class='chat-details'>
-                        <span class='today small'></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class='chat-message chat-message-recipient'>
-                    <img class='chat-image chat-image-default' src='assets/img/profiles/05.jpg' />
-                    <div class='chat-message-wrapper'>
-                      <div class='chat-message-content'>
-                        <p> Artisan glossier vaporware meditation paleo humblebrag forage small batch.</p>
-                      </div>
-                      <div class='chat-details'>
-                        <span class='today small'></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class='chat-message chat-message-sender'>
-                    <img class='chat-image chat-image-default' src='assets/img/profiles/02.jpg' />
-                    <div class='chat-message-wrapper'>
-                      <div class='chat-message-content'>
-                        <p>Bushwick letterpress vegan craft beer dreamcatcher kickstarter.</p>
-                      </div>
-                      <div class='chat-details'>
-                        <span class='today small'></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <footer id="compose-footer">
-                <form class="form-horizontal compose-form">
-                  <ul class="card-actions icons left-bottom">
-                    <li>
-                      <a href="javascript:void(0)">
-                        <i class="zmdi zmdi-attachment-alt"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)">
-                        <i class="zmdi zmdi-mood"></i>
-                      </a>
-                    </li>
-                  </ul>
-                  <div class="form-group m-10 p-l-75 is-empty">
-                    <div class="input-group">
-                      <label class="sr-only">Leave a comment...</label>
-                      <input type="text" class="form-control form-rounded input-lightGray"
-                        placeholder="Leave a comment..">
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-blue btn-fab  btn-fab-sm">
-                          <i class="zmdi zmdi-mail-send"></i>
-                        </button>
-                      </span>
-                    </div>
-                  </div>
-                </form>
-              </footer>
-            </section>
-        </div>
-        </aside>
-      </div>
-      <footer id="footer_wrapper">
-        <div class="footer-content">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <h6>Want to Work with Us?</h6>
-              <p>Paleo flexitarian bushwick letterpress, ea migas yr adipisicing. Man bun tacos tumblr kombucha, yuccie
-                banjo affogato dolore gentrify retro chartreuse. Anim austin tempor ethical, sapiente food truck fanny
-                pack farm-to-table.
-                Culpa keytar esse tilde hoodie, art party nostrud messenger bag authentic helvetica kinfolk cred eu
-                affogato forage.</p>
-            </div>
-            <div class="col-xs-12 col-sm-2">
-              <h6>Company</h6>
-              <ul>
-                <li><a href="javascript:void(0)">About Us </a></li>
-                <li><a href="javascript:void(0)">Careers</a></li>
-                <li><a href="javascript:void(0)">Privacy Policy</a></li>
-                <li><a href="javascript:void(0)">Contact Us</a></li>
-              </ul>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <h6>Email Newsletters</h6>
-              <p>Sign up for new MaterialWrap content, updates, and offers.</p>
-              <div class="form-group is-empty">
-                <div class="input-group">
-                  <label class="control-label sr-only" for="footerEmail">Email Address</label>
-                  <input type="email" class="form-control" id="footerEmail" placeholder="Enter your email address...">
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-white btn-fab animate-fab btn-fab-sm">
-                      <i class="zmdi zmdi-mail-send"></i>
-                    </button>
-                  </span>
-                </div>
-              </div>
             </div>
           </div>
-          <div class="row copy-wrapper">
-            <div class="col-xs-8">
-              <p class="copy">&copy; Copyright <time class="year"></time> MaterialWrap - All Rights Reserved</p>
-            </div>
-            <div class="col-xs-4">
-              <ul class="social">
-                <li>
-                  <a href="javascript:void(0)"> </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)"> </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)"> </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)"> </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
+        </footer>
     </section>
   </div>
-  <button class="btn btn-primary btn-fab animate-fab" style="position: fixed;bottom: 20px;right: 20px;z-index: 99;" data-toggle="modal" data-target="#product_add_modal"><i
-      class="zmdi zmdi-plus"></i></button>
+  <button class="btn btn-primary btn-fab animate-fab" style="position: fixed;bottom: 20px;right: 20px;z-index: 99;"
+    data-toggle="modal" data-target="#product_add_modal"><i class="zmdi zmdi-plus"></i></button>
   <div class="modal fade" id="product_add_modal" tabindex="-1" role="dialog" aria-labelledby="tab_modal">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -669,7 +345,14 @@
       });
 
     </script>
-    <script src="./js/validar_permisos.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="assets/js/vendor.bundle.js"></script>
+    <script src="assets/js/app.bundle.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+
+    <script src="./js/validar_permisos.js"></script>
     <script src="./js/detalle_carros.js"></script>
     <script src="./js/generar_lista_carros.js"></script>
     <script src="./js/crear_vehiculo.js"></script>

@@ -5,7 +5,7 @@ function editarFactura(id) {
         redirect: 'follow'
     };
     
-    fetch("http://localhost:5000/api/project/pf_billing/"+index, requestOptions)
+    fetch("http://localhost:4000/api/project/pf_billing/"+index, requestOptions)
         .then(response => response.json())
         .then(data => {
             billData = data.response[0]            
@@ -29,7 +29,7 @@ function editarFactura(id) {
                     body: raw,
                     redirect: 'follow'
                 };
-                fetch(`http://localhost:5000/api/project/pf_billing/${index}`, requestOptions)
+                fetch(`http://localhost:4000/api/project/pf_billing/${index}`, requestOptions)
                     .then(response => response.text())
                     .then(result => {
                         console.log(result);

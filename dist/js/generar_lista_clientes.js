@@ -1,13 +1,14 @@
+$(document).ready(function () {
 var requestOptions = {
     method: 'GET',
     redirect: 'follow'
 };
 
-fetch("http://localhost:5000/api/project/pf_client/", requestOptions)
+fetch("http://localhost:4000/api/project/pf_client/", requestOptions)
     .then(response => response.json())
     .then(data => {
         var clientTableBody = document.getElementById("clientTableBody");
-        var togglebuttonTemplate = document.querySelector(".togglebutton").cloneNode(true);
+        // var togglebuttonTemplate = document.querySelector(".togglebutton").cloneNode(true);
 
         var oddRow = document.querySelector('tr.odd');
         if (oddRow) {
@@ -17,44 +18,41 @@ fetch("http://localhost:5000/api/project/pf_client/", requestOptions)
         data.response.forEach(client => {
             var row = document.createElement("tr");
 
-            var checkboxCell = document.createElement("td");
-            checkboxCell.className = "checkbox-cell";
-            var checkbox = document.createElement("span");
-            checkbox.className = "checkbox";
-            var label = document.createElement("label");
-            var checkboxInput = document.createElement("input");
-            checkboxInput.type = "checkbox";
-            label.appendChild(checkboxInput);
-            var checkboxMaterial = document.createElement("span");
-            checkboxMaterial.className = "checkbox-material";
-            label.appendChild(checkboxMaterial);
-            checkbox.appendChild(label);
-            checkboxCell.appendChild(checkbox);
-            row.appendChild(checkboxCell);
-
-            var imageCell = document.createElement("td");
-            var image = document.createElement("img");
-            image.src = "assets/img/ecom/products/12252_Tgi0.jpeg";
-            image.alt = "Client Image";
-            image.className = "img-thumbnail";
-            imageCell.appendChild(image);
-            row.appendChild(imageCell);
+            // var imageCell = document.createElement("td");
+            // var image = document.createElement("img");
+            // image.src = "assets/img/ecom/products/12252_Tgi0.jpeg";
+            // image.alt = "Client Image";
+            // image.className = "img-thumbnail";
+            // imageCell.appendChild(image);
+            // row.appendChild(imageCell);
 
             var idClientCell = document.createElement("td");
             idClientCell.textContent = client.id_client;
             row.appendChild(idClientCell);
 
             var nameCell = document.createElement("td");
-            nameCell.textContent = client.name;
+            nameCell.textContent = client.name + " " + client.lastname;
             row.appendChild(nameCell);
 
-            var lastnameCell = document.createElement("td");
-            lastnameCell.textContent = client.lastname;
-            row.appendChild(lastnameCell);
+            var dpiCell = document.createElement("td");
+            dpiCell.textContent = client.dpi;
+            row.appendChild(dpiCell);
+
+            var addressCell = document.createElement("td");
+            addressCell.textContent = client.address;
+            row.appendChild(addressCell);
 
             var emailCell = document.createElement("td");
             emailCell.textContent = client.email;
             row.appendChild(emailCell);
+
+            var phoneCell = document.createElement("td");
+            phoneCell.textContent = client.phone;
+            row.appendChild(phoneCell);
+
+            var nitCell = document.createElement("td");
+            nitCell.textContent = client.nit;
+            row.appendChild(nitCell);
 
             var editCell = document.createElement("td");
             var editLink = document.createElement("a");
@@ -67,8 +65,8 @@ fetch("http://localhost:5000/api/project/pf_client/", requestOptions)
             var editIcon = document.createElement("i");
             editIcon.className = "zmdi zmdi-edit";
             editLink.appendChild(editIcon);
-            editCell.appendChild(editLink);
-            row.appendChild(editCell);
+            // editCell.appendChild(editLink);
+            // row.appendChild(editCell);
 
             var deleteCell = document.createElement("td");
             var deleteLink = document.createElement("a");
@@ -81,10 +79,19 @@ fetch("http://localhost:5000/api/project/pf_client/", requestOptions)
             var deleteIcon = document.createElement("i");
             deleteIcon.className = "zmdi zmdi-delete";
             deleteLink.appendChild(deleteIcon);
-            deleteCell.appendChild(deleteLink);
-            row.appendChild(deleteCell);
+            // deleteCell.appendChild(deleteLink);
+            // row.appendChild(deleteCell);
+
+            editCell.appendChild(editLink);
+            editCell.appendChild(deleteLink);
+            row.appendChild(editCell);
 
             clientTableBody.appendChild(row);
         });
+
+        $('#productsTable').DataTable({
+            searching: true
+        });
     })
     .catch(error => console.log('error', error));
+});

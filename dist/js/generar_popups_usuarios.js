@@ -2,8 +2,23 @@ var requestOptions = {
     method: 'GET',
     redirect: 'follow'
 };
+const select_rol = document.getElementById('idRolInput');
+let rol_filtered = []
+fetch(`http://localhost:4000/api/project/pf_rol`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('La solicitud de la API falló');
+        }
+        return response.json();
+    })
+    .then(data => {
+        rol_filtered = data.response;
+    })
+    .catch(error => {
+        console.error('Error al obtener información de vehículos:', error);
+    });
 
-fetch("http://localhost:5000/api/project/pf_user/", requestOptions)
+fetch("http://localhost:4000/api/project/pf_user/", requestOptions)
     .then(response => response.json()) // Parse the response as JSON
     .then(data => {
         if (data && data.response && Array.isArray(data.response)) {
@@ -59,8 +74,10 @@ function createModal(userData, index) {
                                         <input id="idInputEdit${userData.id_user}" type="text" class="form-control" value="${userData.id_user}" readonly>
                                     </div>
                                     <div class="form-group label-floating is-focused">
-                                        <label class="control-label">ID Rol</label>
-                                        <input id="idRolInputEdit${userData.id_user}" type="text" class="form-control" value="${userData.id_rol}">
+                                        <select class="select form-control" name="idRolInputEdit" id="idRolInputEdit">
+                                            <option value="">Selecciona un rol</option>
+                                            ${rol_selected(userData.id_user)}
+                                        </select>
                                     </div>
                                     <div class="form-group label-floating is-focused">
                                         <label class="control-label">Nombres</label>
@@ -160,4 +177,19 @@ function createModal(userData, index) {
 </div>`;
 
     document.body.appendChild(modalDiv2);
+}
+
+
+function rol_selected(_id_rol) {
+    let options_selected = "";
+    rol_filtered.forEach(option => {
+        if (option.id_rol == _id_rol) {
+            options_selected += `<option value="${option.id_rol}" selected>${option.name}</option>`
+        } else {            
+            options_selected += `<option value="${option.id_rol}">${option.name}</option>`
+        }        
+    })
+
+    return options_selected;
+        
 }

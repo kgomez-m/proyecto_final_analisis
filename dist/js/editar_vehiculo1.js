@@ -4,7 +4,7 @@ function editarVehiculo(id) {
         method: 'GET',
         redirect: 'follow'
     };
-    fetch("http://localhost:5000/api/project/pf_vehicle/"+index, requestOptions)
+    fetch("http://localhost:4000/api/project/pf_vehicle/"+index, requestOptions)
         .then(response => response.json())
         .then(data => {
             if (data && data.response && Array.isArray(data.response)) {

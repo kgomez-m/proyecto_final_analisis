@@ -20,7 +20,7 @@ function generar_menu(id_user) {
         redirect: 'follow'
     };
 
-    fetch(`http://localhost:5000/api/project/pf_user/permission-by-iduser/${id_user}`, requestOptions2)
+    fetch(`http://localhost:4000/api/project/pf_user/permission-by-iduser/${id_user}`, requestOptions2)
         .then(response => response.json())
         .then(data2 => {
             const apiPermissions = data2.response;

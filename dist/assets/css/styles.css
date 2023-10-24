@@ -1,0 +1,128 @@
+.card {
+    border-radius: 8px;
+}
+.card header {
+    padding: 8px 20px !important;
+    border-top-right-radius: 8px !important;
+    border-top-left-radius: 8px !important;
+}
+
+.card .timer, .card .card-count{
+    color: #3D475C !important;
+    font-size: 35px !important;
+    font-weight: bold !important;
+    margin-top: 0;
+}
+
+.card .card-body {
+    padding: 25px 20px !important;
+}
+
+.card-heading-total {
+    background-color: #fb4869;
+    color: #fff !important;
+}
+
+.card-heading-total h2 {
+    color: #fff !important;
+}
+
+.card-heading-car-rents {
+    background-color: #42a5f5;
+    color: #fff !important;
+}
+
+.card-heading-car-rents h2 {
+    color: #fff !important;
+}
+
+.card-heading-car-avaiable {
+    background-color: #40a745;
+    color: #fff !important;
+}
+
+.card-heading-car-avaiable h2 {
+    color: #fff !important;
+}
+
+.card-heading-maintenance {
+    background-color: #626262;
+    color: #fff !important;
+}
+
+.card-heading-maintenance h2 {
+    color: #fff !important;
+}
+
+.card.card-data-tables .dataTables_wrapper .dataTables_filter {
+    display: block;
+}
+
+input[type=search] {
+    -webkit-appearance: auto !important;
+}
+
+#footer_wrapper {
+    bottom: 0 !important;
+    position: fixed;
+    width: 100%;
+}
+
+.card-title {
+    text-align: center;
+}
+
+h2.timer {
+    text-align: center;
+    margin-top: 0;
+}
+
+.td-title {
+    color: #9499A1;
+}
+
+.td-value {
+    color: #3D475C;
+}
+
+#pie-chart svg{
+    margin: 0 auto;
+    display: block;
+}
+
+
+.card-heading-invoice-sent {
+    background-color: #5151f9;    
+    color: #fff !important;
+}
+
+.card-heading-invoice-sent h2 {
+    color: #fff !important;
+}
+
+.card-heading-invoice-paids {
+    background-color: #12b981;
+    color: #fff !important;
+}
+
+.card-heading-invoice-paids h2 {
+    color: #fff !important;
+}
+
+.card-heading-invoice-unpaid{
+    background-color: #ffbb2a;
+    color: #fff !important;
+}
+
+.card-heading-invoice-unpaid h2 {
+    color: #fff !important;
+}
+
+.card-heading-invoice-canceled {
+    background-color: #e11d48;
+    color: #fff !important;
+}
+
+.card-heading-invoice-canceled h2 {
+    color: #fff !important;
+}

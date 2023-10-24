@@ -4,7 +4,7 @@ function editarRenta(id) {
         method: 'GET',
         redirect: 'follow'
     };
-    fetch("http://localhost:5000/api/project/pf_rent/"+index, requestOptions)
+    fetch("http://localhost:4000/api/project/pf_rent/"+index, requestOptions)
         .then(response => response.json())
         .then(data => {
             userRent = data.response[0]            
@@ -28,7 +28,7 @@ function editarRenta(id) {
                     body: raw,
                     redirect: 'follow'
                 };
-                fetch(`http://localhost:5000/api/project/pf_rent/${index}`, requestOptions)
+                fetch(`http://localhost:4000/api/project/pf_rent/${index}`, requestOptions)
                     .then(response => response.text())
                     .then(result => {
                         console.log(result);

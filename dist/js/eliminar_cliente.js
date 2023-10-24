@@ -13,7 +13,7 @@ document.addEventListener('click', function (event) {
       redirect: 'follow'
     };
 
-    fetch(`http://localhost:5000/api/project/pf_client/${index}`, requestOptions)
+    fetch(`http://localhost:4000/api/project/pf_client/${index}`, requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

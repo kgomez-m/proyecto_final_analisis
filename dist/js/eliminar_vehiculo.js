@@ -11,7 +11,7 @@ function eliminarVehiculo(id) {
             redirect: 'follow'
         };
 
-        fetch(`http://localhost:5000/api/project/pf_vehicle/${index}`, requestOptions)
+        fetch(`http://localhost:4000/api/project/pf_vehicle/${index}`, requestOptions)
             .then(response => response.text())
             .then(result => {
                 console.log(result);

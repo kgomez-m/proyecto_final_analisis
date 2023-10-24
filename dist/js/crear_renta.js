@@ -2,8 +2,8 @@ document.getElementById("createButton").addEventListener("click", function () {
 
     var id_client = document.getElementById("id_client").value;
     var id_vehicle = document.getElementById("id_vehicle").value;
-    var rental_init_date = document.getElementById("rental_init_date").value;
-    var rental_end_date = document.getElementById("rental_end_date").value;
+    var rental_init_date = document.getElementById("start_date").value;
+    var rental_end_date = document.getElementById("end_date").value;
     var init_milieage = document.getElementById("init_milieage").value;    
     var rental_fee = document.getElementById("rental_fee").value;  
 
@@ -26,9 +26,14 @@ document.getElementById("createButton").addEventListener("click", function () {
         redirect: 'follow'
     };
 
-    fetch("http://localhost:5000/api/project/pf_rent/", requestOptions)
+    fetch("http://localhost:4000/api/project/pf_rent/", requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
+        .then(result => {
+            console.log(result);
+            if (result.success) {
+                window.location.href = "rental-list.html";
+            }
+        })
         .catch(error => console.log('error', error));
 
     $('#product_add_modal').modal('hide');
